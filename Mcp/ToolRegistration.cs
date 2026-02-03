@@ -7,7 +7,12 @@ public static class ToolRegistration
     public static void Register(IServiceCollection services)
     {
         services.AddMcpServer()
-            .WithHttpTransport()
+            .WithHttpTransport(options =>
+            {
+                // Stateless mode is better for Azure App Service 
+                // as it doesn't require session affinity
+                options.Stateless = true;
+            })
             .WithTools<IncidentTool>();
     }
 }
