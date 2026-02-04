@@ -31,7 +31,10 @@ public class IncidentService : IIncidentService
                 Id = id,
                 Status = "Mitigated",
                 Severity = "Sev2",
-                PlatformIssue = Random.Shared.Next(2) == 1
+                PlatformIssue = true,
+                Description = "Platform issue detected. The resource was impacted by underlying Azure infrastructure.",
+                AffectedService = "Azure Platform",
+                Region = "Global"
             };
 
             _logger.LogInformation(
